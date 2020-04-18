@@ -1,43 +1,61 @@
-import React from "react";
-import styled, { ThemeProvider } from "./src/styled-components";
-import { themeGenerator } from "./src/theme";
-import NavDrawer from "./src/components/nav-drawer";
-
-const Container = styled.View`
-  flex: 1;
-  background-color: papayawhip;
-  justify-content: center;
-  align-items: center;
-`;
-
-const Title = styled.Text`
-  font-size: 20px;
-  font-weight: 500;
-  color: palevioletred;
-`;
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+// MUST BE FIRST ^
+import React, { useState } from "react";
+import "react-native-gesture-handler";
+import { getTheme, ThemeContext, Button } from "react-native-material-ui";
+import { NavDrawer } from "./src/components/nav-drawer/nav-drawer";
+import { CharSheet } from "./src/pages/char-sheet/char-sheet";
+import { lightUiTheme } from "./src/theme";
+import { View, Text } from "react-native";
+import { BoxShadow } from "./src/style.utils";
 
 export default function App() {
-  // const settings: Settings = {
-  //   closeTabs: false,
-  //   includePinnned: false,
-  //   width: 450,
-  //   height: 600, // max for chrome extension
-  //   ignoreNewtabs: false,
-  //   unsuspendTabs: true,
-  // };
-  const theme = themeGenerator(false);
+  const Stack = createStackNavigator();
+
+  const [isNavDrawerOpen, openNavDrawer] = useState(false);
 
   return (
-    // <SettingsContext.Provider value={settings}>
-    <ThemeProvider theme={theme}>
-      <>
-        <Container>
-          <Title>React Native with 💅 Styled Components</Title>
-        </Container>
-        <NavDrawer /> 
-      </>
-    </ThemeProvider>
-    // </SettingsContext.Provider>
+    <NavigationContainer>
+      <ThemeContext.Provider value={getTheme(lightUiTheme)}>
+        <View
+          style={{
+            height: "100%",
+            flexDirection: "row",
+            justifyContent: "flex-start",
+          }}
+        >
+          <NavDrawer open={isNavDrawerOpen} />
+          {/* // topbar */}
+          <View
+            style={{
+              width: "100%",
+              height: "100%",
+              position: "absolute",
+              top: "0",
+              left: "0",
+              bottom: "0",
+            }}
+          >
+            {/* // navigation.navigate('Profile', {name: 'Jane'}) */}
+            <Button
+              text="Click me!"
+              onPress={() => openNavDrawer((value) => !value)}
+            />
+            {/*           
+            <Stack.Navigator>
+              <Stack.Screen
+                name="Character Sheet"
+                component={CharSheet}
+                options={{ title: "Welcome" }}
+              />
+              <Stack.Screen name="Profile" component={CharSheet} />
+            </Stack.Navigator> */}
+          </View>
+          <View />
+        </View>
+      </ThemeContext.Provider>
+    </NavigationContainer>
   );
 }
 
@@ -83,4 +101,19 @@ database view (create and view)
   - monsters database
   - feats database
   - backgrounds database
+*/
+
+/*
+import { withTheme } from 'react-native-material-ui'
+
+class MyButton extends Component {
+    render() {
+	    // it's really easy to get primary color everywhere in your app
+        const { primaryColor } = this.props.theme.palette;
+
+        return ...
+    }
+}
+
+export default withTheme(MyButton)
 */

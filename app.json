@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "dnd-app",
-    "slug": "dnd-app",
+    "slug": "mwjrink-dnd-app",
     "platforms": [
       "ios",
       "android",
@@ -23,6 +23,8 @@
     ],
     "ios": {
       "supportsTablet": true
-    }
+    },
+    "description": "",
+    "githubUrl": "https://github.com/Mwjrink/dnd-app"
   }
 }
