@@ -23,6 +23,7 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import { routes } from "./routing";
 
 const App: React.FC = () => {
 
@@ -32,8 +33,15 @@ const App: React.FC = () => {
         <IonSplitPane contentId="main">
           <Menu />
           <IonRouterOutlet id="main">
-            <Route path="/page/:name" component={Page} exact />
-            <Redirect from="/" to="/page/Inbox" exact />
+            {
+              routes.map((route) => {
+                return (
+                  <Route path={route.path} component={route.component} exact />
+                );
+              })
+            }
+            {/* <Route path="/page/:name" component={Page} exact /> */}
+            <Redirect from="/" to="/character-sheet" exact />
           </IonRouterOutlet>
         </IonSplitPane>
       </IonReactRouter>
