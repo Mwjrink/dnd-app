@@ -25,8 +25,6 @@ export default function App() {
             justifyContent: "flex-start",
           }}
         >
-          <NavDrawer open={isNavDrawerOpen} />
-          {/* // topbar */}
           <View
             style={{
               width: "100%",
@@ -39,7 +37,7 @@ export default function App() {
           >
             {/* // navigation.navigate('Profile', {name: 'Jane'}) */}
             <Button
-              text="Click me!"
+              text="Click mee!"
               onPress={() => openNavDrawer((value) => !value)}
             />
             {/*           
@@ -52,6 +50,8 @@ export default function App() {
               <Stack.Screen name="Profile" component={CharSheet} />
             </Stack.Navigator> */}
           </View>
+          <NavDrawer open={isNavDrawerOpen} />
+          {/* // topbar */}
           <View />
         </View>
       </ThemeContext.Provider>
