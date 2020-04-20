@@ -3,13 +3,10 @@ import {
   IonLabel,
   IonHeader,
   IonPage,
-  IonToolbar,
-  IonButtons,
-  IonMenuButton,
-  IonTitle,
   IonContent,
 } from "@ionic/react";
 import { Character } from "../../models/character";
+import PageHeader from "../../components/MenuBar/MenuBar";
 
 interface CharacterSheetProps {
   character: Character;
@@ -18,17 +15,8 @@ interface CharacterSheetProps {
 function CharacterSheet({ character }: CharacterSheetProps) {
   return (
     <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonButtons slot="start">
-            <IonMenuButton />
-          </IonButtons>
-          <IonTitle>
-            Character Sheet {character ? ": " + character.name : ""}
-          </IonTitle>
-        </IonToolbar>
-      </IonHeader>
-
+      <PageHeader title={`Character Sheet ${character ? ": " + character.name : ""}`} />
+      
       <IonContent>
         <IonHeader>
           <IonLabel>REEE</IonLabel>

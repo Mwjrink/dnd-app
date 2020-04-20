@@ -1,33 +1,20 @@
 import React from "react";
 import {
   IonLabel,
-  IonHeader,
   IonPage,
-  IonToolbar,
-  IonButtons,
-  IonMenuButton,
-  IonTitle,
   IonContent,
 } from "@ionic/react";
+import PageHeader from "../../components/MenuBar/MenuBar";
 
 interface DatabaseProps {}
 
 function Database({}: DatabaseProps) {
   return (
     <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonButtons slot="start">
-            <IonMenuButton />
-          </IonButtons>
-          <IonTitle>Database</IonTitle>
-        </IonToolbar>
-      </IonHeader>
+      <PageHeader title={"Database"} />
 
       <IonContent>
-        <IonHeader collapse="condense">
           <IonLabel>REEE</IonLabel>
-        </IonHeader>
       </IonContent>
     </IonPage>
   );

@@ -3,13 +3,10 @@ import {
   IonLabel,
   IonHeader,
   IonPage,
-  IonToolbar,
-  IonButtons,
-  IonMenuButton,
-  IonTitle,
   IonContent,
 } from "@ionic/react";
 import { Character } from "../../models/character";
+import PageHeader from "../../components/MenuBar/MenuBar";
 
 interface InventoryProps {
   character: Character;
@@ -18,16 +15,7 @@ interface InventoryProps {
 function Inventory({ character }: InventoryProps) {
   return (
     <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonButtons slot="start">
-            <IonMenuButton />
-          </IonButtons>
-          <IonTitle>
-            Inventory {character ? ": " + character.name : ""}
-          </IonTitle>
-        </IonToolbar>
-      </IonHeader>
+      <PageHeader title={"Inventory"} />
 
       <IonContent>
         <IonHeader>

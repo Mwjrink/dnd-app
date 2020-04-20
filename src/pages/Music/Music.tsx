@@ -9,20 +9,14 @@ import {
   IonTitle,
   IonContent,
 } from "@ionic/react";
+import PageHeader from "../../components/MenuBar/MenuBar";
 
 interface MusicProps {}
 
 function Music({}: MusicProps) {
   return (
     <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonButtons slot="start">
-            <IonMenuButton />
-          </IonButtons>
-          <IonTitle>Music</IonTitle>
-        </IonToolbar>
-      </IonHeader>
+      <PageHeader title={"Music"} />
 
       <IonContent>
         <IonHeader>

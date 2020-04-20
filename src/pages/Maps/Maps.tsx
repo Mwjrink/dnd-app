@@ -3,13 +3,10 @@ import {
   IonLabel,
   IonHeader,
   IonPage,
-  IonToolbar,
-  IonButtons,
-  IonMenuButton,
-  IonTitle,
   IonContent,
 } from "@ionic/react";
 import { Character } from "../../models/character";
+import PageHeader from "../../components/MenuBar/MenuBar";
 
 interface MapsProps {
   character: Character;
@@ -18,14 +15,7 @@ interface MapsProps {
 function Maps({ character }: MapsProps) {
   return (
     <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonButtons slot="start">
-            <IonMenuButton />
-          </IonButtons>
-          <IonTitle>Maps {character ? ": " + character.name : ""}</IonTitle>
-        </IonToolbar>
-      </IonHeader>
+      <PageHeader title={"Maps"} />
 
       <IonContent>
         <IonHeader>
