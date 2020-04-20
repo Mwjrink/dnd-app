@@ -1,4 +1,4 @@
-import CharacterSheet from "./components/CharacterSheet/CharacterSheet";
+import CharacterSheet from "./pages/CharacterSheet/CharacterSheet";
 
 interface AppRoute {
   path: string;
