@@ -1,18 +1,15 @@
+import { IonContent, IonHeader, IonLabel, IonPage } from "@ionic/react";
 import React from "react";
-import {
-  IonLabel,
-  IonHeader,
-  IonPage,
-  IonContent,
-} from "@ionic/react";
-import { Character } from "../../models/character";
 import PageHeader from "../../components/MenuBar/MenuBar";
+import { useCharacterContext } from "../../utils/CharacterContext";
 
 interface CharacterSheetProps {
-  character: Character;
+  
 }
 
-function CharacterSheet({ character }: CharacterSheetProps) {
+function CharacterSheet({ }: CharacterSheetProps) {
+  const { character } = useCharacterContext();
+
   return (
     <IonPage>
       <PageHeader title={`Character Sheet ${character ? ": " + character.name : ""}`} />
