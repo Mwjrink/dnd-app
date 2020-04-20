@@ -1,4 +1,5 @@
 import {
+  IonAvatar,
   IonContent,
   IonIcon,
   IonItem,
@@ -7,15 +8,26 @@ import {
   IonListHeader,
   IonMenu,
   IonMenuToggle,
-  IonNote,
-  IonAvatar,
-  IonItemDivider,
-} from '@ionic/react';
-
-import React from 'react';
-import { useLocation } from 'react-router-dom';
-import { documentOutline, documentSharp, colorWandOutline, colorWandSharp, cubeOutline, cubeSharp, mapOutline, mapSharp, pencilOutline, pencilSharp, fileTrayFullOutline, fileTrayFullSharp, musicalNotesOutline, musicalNotesSharp } from 'ionicons/icons';
-import './Menu.css';
+} from "@ionic/react";
+import {
+  cubeOutline,
+  cubeSharp,
+  flashOutline,
+  flashSharp,
+  libraryOutline,
+  librarySharp,
+  manOutline,
+  manSharp,
+  mapOutline,
+  mapSharp,
+  musicalNotesOutline,
+  musicalNotesSharp,
+  pencilOutline,
+  pencilSharp,
+} from "ionicons/icons";
+import React from "react";
+import { useLocation } from "react-router-dom";
+import "./Menu.css";
 
 interface AppPage {
   url: string;
@@ -26,55 +38,60 @@ interface AppPage {
 
 const characterPages: AppPage[] = [
   {
-    title: 'Character Sheet',
-    url: '/page/character-sheet',
-    iosIcon: documentOutline,
-    mdIcon: documentSharp
+    title: "Character Sheet",
+    url: "/page/character-sheet",
+    iosIcon: manOutline,
+    mdIcon: manSharp,
   },
   {
-    title: 'Spellbook',
-    url: '/page/spellbook',
-    iosIcon: colorWandOutline,
-    mdIcon: colorWandSharp
+    title: "Spellbook",
+    url: "/page/spellbook",
+    iosIcon: flashOutline,
+    mdIcon: flashSharp,
   },
   {
-    title: 'Inventory',
-    url: '/page/inventory',
+    title: "Inventory",
+    url: "/page/inventory",
     iosIcon: cubeOutline,
-    mdIcon: cubeSharp
+    mdIcon: cubeSharp,
   },
   {
-    title: 'Maps',
-    url: '/page/maps',
+    title: "Maps",
+    url: "/page/maps",
     iosIcon: mapOutline,
-    mdIcon: mapSharp
+    mdIcon: mapSharp,
   },
   {
-    title: 'Notes',
-    url: '/page/notes',
+    title: "Notes",
+    url: "/page/notes",
     iosIcon: pencilOutline,
-    mdIcon: pencilSharp
-  }
+    mdIcon: pencilSharp,
+  },
 ];
 
 const staticPages: AppPage[] = [
   {
-    title: 'Database',
-    url: '/page/database',
-    iosIcon: fileTrayFullOutline,
-    mdIcon: fileTrayFullSharp
+    title: "Database",
+    url: "/page/database",
+    iosIcon: libraryOutline,
+    mdIcon: librarySharp,
   },
   {
-    title: 'Music',
-    url: '/page/music',
+    title: "Music",
+    url: "/page/music",
     iosIcon: musicalNotesOutline,
-    mdIcon: musicalNotesSharp
-  }
+    mdIcon: musicalNotesSharp,
+  },
 ];
 
-const labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
+// const labels = ["Family", "Friends", "Notes", "Work", "Travel", "Reminders"];
 
-const Menu: React.FC = () => {
+// pawOutline for database/beasts
+// cloud-upload-outline for syncing db to google drive etc
+// bonfireOutline for SOMETHING cause its hype
+// beerOutline for SOMETHING cause its hype
+
+function Menu() {
   const location = useLocation();
 
   return (
@@ -83,14 +100,25 @@ const Menu: React.FC = () => {
         <IonList id="character-pages">
           <IonItem lines="full">
             <IonAvatar slot="start">
-              <img src="https://media.giphy.com/media/7isbcNAx367qU/200.gif"></img>
+              <img
+                src="https://media.giphy.com/media/7isbcNAx367qU/200.gif"
+                alt="spoodr-mon"
+              />
             </IonAvatar>
             <IonLabel>Spider-Man</IonLabel>
           </IonItem>
           {characterPages.map((characterPage, index) => {
             return (
               <IonMenuToggle key={index} autoHide={false}>
-                <IonItem className={location.pathname === characterPage.url ? 'selected' : ''} routerLink={characterPage.url} routerDirection="none" lines="none" detail={false}>
+                <IonItem
+                  className={
+                    location.pathname === characterPage.url ? "selected" : ""
+                  }
+                  routerLink={characterPage.url}
+                  routerDirection="none"
+                  lines="none"
+                  detail={false}
+                >
                   <IonIcon slot="start" icon={characterPage.iosIcon} />
                   <IonLabel>{characterPage.title}</IonLabel>
                 </IonItem>
@@ -103,7 +131,15 @@ const Menu: React.FC = () => {
           {staticPages.map((staticPage, index) => {
             return (
               <IonMenuToggle key={index} autoHide={false}>
-                <IonItem className={location.pathname === staticPage.url ? 'selected' : ''} routerLink={staticPage.url} routerDirection="none" lines="none" detail={false}>
+                <IonItem
+                  className={
+                    location.pathname === staticPage.url ? "selected" : ""
+                  }
+                  routerLink={staticPage.url}
+                  routerDirection="none"
+                  lines="none"
+                  detail={false}
+                >
                   <IonIcon slot="start" icon={staticPage.iosIcon} />
                   <IonLabel>{staticPage.title}</IonLabel>
                 </IonItem>
@@ -124,6 +160,6 @@ const Menu: React.FC = () => {
       </IonContent>
     </IonMenu>
   );
-};
+}
 
 export default Menu;

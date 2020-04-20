@@ -1,14 +1,13 @@
-import React from 'react';
-import CharacterSheet from './components/CharacterSheet/CharacterSheet';
+import CharacterSheet from "./components/CharacterSheet/CharacterSheet";
 
 interface AppRoute {
-    path: string;
-    component: any;
+  path: string;
+  component: any;
 }
-  
+
 export const routes: AppRoute[] = [
-    {
-        path: "/character-sheet",
-        component: CharacterSheet
-    }
-]
+  {
+    path: "/character-sheet",
+    component: CharacterSheet,
+  },
+];
