@@ -32,9 +32,14 @@ const App: React.FC = () => {
         <IonSplitPane contentId="main">
           <Menu />
           <IonRouterOutlet id="main">
-            {routes.map((route) => {
+            {routes.map((route, i) => {
               return (
-                <Route path={route.path} component={route.component} exact />
+                <Route
+                  key={i}
+                  path={route.path}
+                  component={route.component}
+                  exact
+                />
               );
             })}
             {/* <Route path="/page/:name" component={Page} exact /> */}
