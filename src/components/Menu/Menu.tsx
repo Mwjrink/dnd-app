@@ -39,31 +39,31 @@ interface AppPage {
 const characterPages: AppPage[] = [
   {
     title: "Character Sheet",
-    url: "/character-sheet",
+    url: "/page/character-sheet",
     iosIcon: manOutline,
     mdIcon: manSharp,
   },
   {
     title: "Spellbook",
-    url: "/spellbook",
+    url: "/page/spellbook",
     iosIcon: flashOutline,
     mdIcon: flashSharp,
   },
   {
     title: "Inventory",
-    url: "/inventory",
+    url: "/page/inventory",
     iosIcon: cubeOutline,
     mdIcon: cubeSharp,
   },
   {
     title: "Maps",
-    url: "/maps",
+    url: "/page/maps",
     iosIcon: mapOutline,
     mdIcon: mapSharp,
   },
   {
     title: "Notes",
-    url: "/notes",
+    url: "/page/notes",
     iosIcon: pencilOutline,
     mdIcon: pencilSharp,
   },
@@ -72,13 +72,13 @@ const characterPages: AppPage[] = [
 const staticPages: AppPage[] = [
   {
     title: "Database",
-    url: "/database",
+    url: "/page/database",
     iosIcon: libraryOutline,
     mdIcon: librarySharp,
   },
   {
     title: "Music",
-    url: "/music",
+    url: "/page/music",
     iosIcon: musicalNotesOutline,
     mdIcon: musicalNotesSharp,
   },
@@ -91,21 +91,11 @@ const staticPages: AppPage[] = [
 // bonfireOutline for SOMETHING cause its hype
 // beerOutline for SOMETHING cause its hype
 
-interface MenuProps {
-  open: boolean;
-}
-
-function Menu({ open }: MenuProps) {
+function Menu() {
   const location = useLocation();
 
   return (
-    <IonMenu
-      contentId="main"
-      type="reveal"
-      swipeGesture
-      id="nav-menu"
-      hidden={!open}
-    >
+    <IonMenu contentId="main" type="overlay" swipeGesture>
       <IonContent>
         <IonList id="character-pages">
           <IonItem lines="full">
