@@ -9,10 +9,10 @@ import { Character } from "../../models/character";
 import PageHeader from "../../components/MenuBar/MenuBar";
 
 interface MapsProps {
-  character: Character;
+  
 }
 
-function Maps({ character }: MapsProps) {
+function Maps({ }: MapsProps) {
   return (
     <IonPage>
       <PageHeader title={"Maps"} />

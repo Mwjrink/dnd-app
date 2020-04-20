@@ -4,10 +4,9 @@ import { Character } from "../../models/character";
 import PageHeader from "../../components/MenuBar/MenuBar";
 
 interface SpellBookProps {
-  character: Character;
 }
 
-function SpellBook({ character }: SpellBookProps) {
+function SpellBook({ }: SpellBookProps) {
   return (
     <IonPage>
       <PageHeader title={"Database"} />

@@ -9,10 +9,10 @@ import { Character } from "../../models/character";
 import PageHeader from "../../components/MenuBar/MenuBar";
 
 interface NotesProps {
-  character: Character;
+  
 }
 
-function Notes({ character }: NotesProps) {
+function Notes({ }: NotesProps) {
   return (
     <IonPage>
       <PageHeader title={"Notes"} />

@@ -9,10 +9,10 @@ import { Character } from "../../models/character";
 import PageHeader from "../../components/MenuBar/MenuBar";
 
 interface InventoryProps {
-  character: Character;
+  
 }
 
-function Inventory({ character }: InventoryProps) {
+function Inventory({ }: InventoryProps) {
   return (
     <IonPage>
       <PageHeader title={"Inventory"} />
