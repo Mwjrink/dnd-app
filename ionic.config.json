@@ -1,5 +1,7 @@
 {
   "name": "dnd-app",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "react"
 }

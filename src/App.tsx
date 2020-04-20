@@ -54,3 +54,18 @@ const App: React.FC = () => {
 };
 
 export default App;
+
+// https://ionicframework.com/docs/native/app-preferences
+// https://ionicframework.com/docs/native/app-rate
+// https://ionicframework.com/docs/native/app-update
+// https://ionicframework.com/docs/native/spotify-auth
+// https://ionicframework.com/docs/native/push
+// https://ionicframework.com/docs/native/file
+
+/*
+https://ionicframework.com/docs/native/firebase-authentication
+https://ionicframework.com/docs/native/firebase-config
+https://ionicframework.com/docs/native/firebase-crashlytics same as: https://ionicframework.com/docs/native/firebase-crash
+https://ionicframework.com/docs/native/firebase-messaging
+https://ionicframework.com/docs/native/firebase-x same as: https://ionicframework.com/docs/native/firebase ??
+*/
