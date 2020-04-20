@@ -11,11 +11,11 @@ import {
 } from "@ionic/react";
 import { Character } from "../../models/character";
 
-interface CharacterSheetProps {
+interface MapsProps {
   character: Character;
 }
 
-function CharacterSheet({ character }: CharacterSheetProps) {
+function Maps({ character }: MapsProps) {
   return (
     <IonPage>
       <IonHeader>
@@ -23,9 +23,7 @@ function CharacterSheet({ character }: CharacterSheetProps) {
           <IonButtons slot="start">
             <IonMenuButton />
           </IonButtons>
-          <IonTitle>
-            Character Sheet {character ? ": " + character.name : ""}
-          </IonTitle>
+          <IonTitle>Maps {character ? ": " + character.name : ""}</IonTitle>
         </IonToolbar>
       </IonHeader>
 
@@ -38,4 +36,4 @@ function CharacterSheet({ character }: CharacterSheetProps) {
   );
 }
 
-export default CharacterSheet;
+export default Maps;

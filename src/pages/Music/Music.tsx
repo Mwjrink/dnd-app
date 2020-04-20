@@ -9,13 +9,10 @@ import {
   IonTitle,
   IonContent,
 } from "@ionic/react";
-import { Character } from "../../models/character";
 
-interface CharacterSheetProps {
-  character: Character;
-}
+interface MusicProps {}
 
-function CharacterSheet({ character }: CharacterSheetProps) {
+function Music({}: MusicProps) {
   return (
     <IonPage>
       <IonHeader>
@@ -23,9 +20,7 @@ function CharacterSheet({ character }: CharacterSheetProps) {
           <IonButtons slot="start">
             <IonMenuButton />
           </IonButtons>
-          <IonTitle>
-            Character Sheet {character ? ": " + character.name : ""}
-          </IonTitle>
+          <IonTitle>Music</IonTitle>
         </IonToolbar>
       </IonHeader>
 
@@ -38,4 +33,4 @@ function CharacterSheet({ character }: CharacterSheetProps) {
   );
 }
 
-export default CharacterSheet;
+export default Music;

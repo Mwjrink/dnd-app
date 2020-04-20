@@ -39,31 +39,31 @@ interface AppPage {
 const characterPages: AppPage[] = [
   {
     title: "Character Sheet",
-    url: "/page/character-sheet",
+    url: "/character-sheet",
     iosIcon: manOutline,
     mdIcon: manSharp,
   },
   {
     title: "Spellbook",
-    url: "/page/spellbook",
+    url: "/spellbook",
     iosIcon: flashOutline,
     mdIcon: flashSharp,
   },
   {
     title: "Inventory",
-    url: "/page/inventory",
+    url: "/inventory",
     iosIcon: cubeOutline,
     mdIcon: cubeSharp,
   },
   {
     title: "Maps",
-    url: "/page/maps",
+    url: "/maps",
     iosIcon: mapOutline,
     mdIcon: mapSharp,
   },
   {
     title: "Notes",
-    url: "/page/notes",
+    url: "/notes",
     iosIcon: pencilOutline,
     mdIcon: pencilSharp,
   },
@@ -72,13 +72,13 @@ const characterPages: AppPage[] = [
 const staticPages: AppPage[] = [
   {
     title: "Database",
-    url: "/page/database",
+    url: "/database",
     iosIcon: libraryOutline,
     mdIcon: librarySharp,
   },
   {
     title: "Music",
-    url: "/page/music",
+    url: "/music",
     iosIcon: musicalNotesOutline,
     mdIcon: musicalNotesSharp,
   },

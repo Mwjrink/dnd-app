@@ -11,11 +11,11 @@ import {
 } from "@ionic/react";
 import { Character } from "../../models/character";
 
-interface CharacterSheetProps {
+interface InventoryProps {
   character: Character;
 }
 
-function CharacterSheet({ character }: CharacterSheetProps) {
+function Inventory({ character }: InventoryProps) {
   return (
     <IonPage>
       <IonHeader>
@@ -24,7 +24,7 @@ function CharacterSheet({ character }: CharacterSheetProps) {
             <IonMenuButton />
           </IonButtons>
           <IonTitle>
-            Character Sheet {character ? ": " + character.name : ""}
+            Inventory {character ? ": " + character.name : ""}
           </IonTitle>
         </IonToolbar>
       </IonHeader>
@@ -38,4 +38,4 @@ function CharacterSheet({ character }: CharacterSheetProps) {
   );
 }
 
-export default CharacterSheet;
+export default Inventory;

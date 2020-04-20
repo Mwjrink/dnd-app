@@ -29,7 +29,7 @@ const App: React.FC = () => {
   return (
     <IonApp>
       <IonReactRouter>
-        <IonSplitPane contentId="main">
+        {/* <IonSplitPane contentId="main"> */}
           <Menu />
           <IonRouterOutlet id="main">
             {routes.map((route, i) => {
@@ -45,7 +45,7 @@ const App: React.FC = () => {
             {/* <Route path="/page/:name" component={Page} exact /> */}
             <Redirect from="/" to="/character-sheet" exact />
           </IonRouterOutlet>
-        </IonSplitPane>
+        {/* </IonSplitPane> */}
       </IonReactRouter>
     </IonApp>
   );

@@ -9,13 +9,10 @@ import {
   IonTitle,
   IonContent,
 } from "@ionic/react";
-import { Character } from "../../models/character";
 
-interface CharacterSheetProps {
-  character: Character;
-}
+interface DatabaseProps {}
 
-function CharacterSheet({ character }: CharacterSheetProps) {
+function Database({}: DatabaseProps) {
   return (
     <IonPage>
       <IonHeader>
@@ -23,14 +20,12 @@ function CharacterSheet({ character }: CharacterSheetProps) {
           <IonButtons slot="start">
             <IonMenuButton />
           </IonButtons>
-          <IonTitle>
-            Character Sheet {character ? ": " + character.name : ""}
-          </IonTitle>
+          <IonTitle>Database</IonTitle>
         </IonToolbar>
       </IonHeader>
 
       <IonContent>
-        <IonHeader>
+        <IonHeader collapse="condense">
           <IonLabel>REEE</IonLabel>
         </IonHeader>
       </IonContent>
@@ -38,4 +33,4 @@ function CharacterSheet({ character }: CharacterSheetProps) {
   );
 }
 
-export default CharacterSheet;
+export default Database;
