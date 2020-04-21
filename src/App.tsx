@@ -21,10 +21,14 @@ import { routes } from "./routing";
 /* Theme variables */
 import "./theme/variables.css";
 import { CreateCharacterContext } from "./utils/CharacterContext";
+import { DbManager } from "./utils/DbManager";
+import { SQLite } from "@ionic-native/sqlite";
 
 const App: React.FC = () => {
   const defaultCharContext = { character: null };
   const CharacterContext = CreateCharacterContext(defaultCharContext);
+  const db = new DbManager(SQLite);
+  db.init();
 
   return (
     <IonApp>

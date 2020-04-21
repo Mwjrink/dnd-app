@@ -1,12 +1,10 @@
 import React from "react";
 import {
   IonLabel,
-  IonHeader,
   IonPage,
   IonContent,
 } from "@ionic/react";
-import { Character } from "../../models/character";
-import PageHeader from "../../components/MenuBar/MenuBar";
+import PageHeader from "../../components/PageHeader/PageHeader";
 
 interface InventoryProps {
   
@@ -18,9 +16,7 @@ function Inventory({ }: InventoryProps) {
       <PageHeader title={"Inventory"} />
 
       <IonContent>
-        <IonHeader>
-          <IonLabel>REEE</IonLabel>
-        </IonHeader>
+        <IonLabel>REEE</IonLabel>
       </IonContent>
     </IonPage>
   );

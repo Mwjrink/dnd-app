@@ -1,7 +1,6 @@
-import { IonContent, IonHeader, IonLabel, IonPage } from "@ionic/react";
+import { IonContent, IonLabel, IonPage } from "@ionic/react";
 import React from "react";
-import { Character } from "../../models/character";
-import PageHeader from "../../components/MenuBar/MenuBar";
+import PageHeader from "../../components/PageHeader/PageHeader";
 
 interface SpellBookProps {
 }
@@ -12,9 +11,7 @@ function SpellBook({ }: SpellBookProps) {
       <PageHeader title={"Database"} />
 
       <IonContent>
-        <IonHeader>
-          <IonLabel>REEE</IonLabel>
-        </IonHeader>
+        <IonLabel>REEE</IonLabel>
       </IonContent>
     </IonPage>
   );

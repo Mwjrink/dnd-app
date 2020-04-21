@@ -1,15 +1,10 @@
 import React from "react";
 import {
   IonLabel,
-  IonHeader,
   IonPage,
-  IonToolbar,
-  IonButtons,
-  IonMenuButton,
-  IonTitle,
   IonContent,
 } from "@ionic/react";
-import PageHeader from "../../components/MenuBar/MenuBar";
+import PageHeader from "../../components/PageHeader/PageHeader";
 
 interface MusicProps {}
 
@@ -19,9 +14,7 @@ function Music({}: MusicProps) {
       <PageHeader title={"Music"} />
 
       <IonContent>
-        <IonHeader>
-          <IonLabel>REEE</IonLabel>
-        </IonHeader>
+        <IonLabel>REEE</IonLabel>
       </IonContent>
     </IonPage>
   );

@@ -1,7 +1,7 @@
-import { SQLite, SQLiteObject } from "@ionic-native/sqlite/ngx";
+import { SQLiteObject, SQLiteOriginal } from "@ionic-native/sqlite";
 
 export class DbManager {
-  constructor(private sqlite: SQLite) {}
+  constructor(private sqlite: SQLiteOriginal) {}
 
   async init() {
     this.sqlite

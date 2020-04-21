@@ -4,7 +4,7 @@ import {
   IonPage,
   IonContent,
 } from "@ionic/react";
-import PageHeader from "../../components/MenuBar/MenuBar";
+import PageHeader from "../../components/PageHeader/PageHeader";
 
 interface DatabaseProps {}
 
