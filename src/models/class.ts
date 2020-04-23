@@ -1,3 +1,3 @@
-export class Class {
-    name!: string;
+export interface Class {
+    name: string;
 }

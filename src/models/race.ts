@@ -1,3 +1,3 @@
-export class Race {
-    name!: string;
+export interface Race {
+    name: string;
 }

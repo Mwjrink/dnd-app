@@ -2,7 +2,7 @@ import { createContext, useContext } from 'react';
 import { Character } from '../models/character';
 
 interface CurrentCharacterContext {
-  character: Character | null;
+  character: Character;
 }
 
 let context: React.Context<CurrentCharacterContext>;
