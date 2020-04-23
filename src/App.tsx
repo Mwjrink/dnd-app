@@ -1,5 +1,5 @@
-import { IonApp, IonRouterOutlet } from "@ionic/react";
-import { IonReactRouter } from "@ionic/react-router";
+import { IonApp, IonRouterOutlet, isPlatform } from "@ionic/react";
+import { IonReactRouter, IonReactHashRouter } from "@ionic/react-router";
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
 import "@ionic/react/css/display.css";
@@ -23,36 +23,53 @@ import "./theme/variables.css";
 import { CreateCharacterContext } from "./utils/CharacterContext";
 import { DbManager } from "./utils/DbManager";
 import { SQLite } from "@ionic-native/sqlite";
+import CharacterSheet from "./pages/CharacterSheet/CharacterSheet";
+
+if (isPlatform("electron")) {
+  // const { Menu : ElectronMenu } = require("electron");
+  // ElectronMenu.setApplicationMenu(null);
+}
+
+const Router: any = isPlatform("electron")? IonReactHashRouter : IonReactHashRouter;
 
 const App: React.FC = () => {
   const defaultCharContext = { character: null };
   const CharacterContext = CreateCharacterContext(defaultCharContext);
-  const db = new DbManager(SQLite);
-  db.init();
+  // const db = new DbManager(SQLite);
+  // db.init();
+
+  console.log("Current route: " + window.location.href);
+
+  console.log((isPlatform("electron")? "#/" : "") + "some-route-page");
 
   return (
     <IonApp>
-      <IonReactRouter>
+      {/* <IonReactRouter> */}
+      <Router>
         {/* <IonSplitPane contentId="main"> */}
         <Menu />
         <CharacterContext.Provider value={defaultCharContext}>
-          <IonRouterOutlet id="main">
-            {routes.map((route, i) => {
-              return (
-                <Route
-                  key={i}
-                  path={route.path}
-                  component={route.component}
-                  exact
-                />
-              );
-            })}
-            {/* <Route path="/page/:name" component={Page} exact /> */}
-            <Redirect from="/" to="/character-sheet" exact />
-          </IonRouterOutlet>
+          {/* <Router> */}
+            <IonRouterOutlet id="main">
+              {routes.map((route, i) => {
+                return (
+                  <Route
+                    key={i}
+                    path={route.path}
+                    component={route.component}
+                    exact
+                  />
+                );
+              })}
+              {/* <Route path="/page/:name" component={Page} exact /> */}
+              <Redirect from="/" to="character-sheet" exact />
+              {/* <Route path="/" exact component={CharacterSheet} /> */}
+            </IonRouterOutlet>
+          {/* </Router> */}
         </CharacterContext.Provider>
         {/* </IonSplitPane> */}
-      </IonReactRouter>
+        </Router>
+      {/* </IonReactRouter> */}
     </IonApp>
   );
 };

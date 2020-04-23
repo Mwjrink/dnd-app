@@ -3,6 +3,6 @@
   "appName": "dnd-app",
   "bundledWebRuntime": false,
   "npmClient": "yarn",
-  "webDir": "public",
+  "webDir": "build",
   "cordova": {}
 }
