@@ -8,7 +8,7 @@ interface SpellBookProps {
 function SpellBook({ }: SpellBookProps) {
   return (
     <IonPage>
-      <PageHeader title={"Spell Book"} />
+      <PageHeader title={"Spellbook"} />
 
       <IonContent>
         <IonLabel>REEE</IonLabel>
