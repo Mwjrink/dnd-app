@@ -1,19 +1,21 @@
-import { Character } from "../../models/character";
-import React from "react";
 import {
   IonCard,
-  IonCardHeader,
-  IonCardTitle,
-  IonCardSubtitle,
   IonCardContent,
+  IonCardHeader,
+  IonCardSubtitle,
+  IonCardTitle,
+  IonItem,
+  IonLabel,
+  IonIcon,
 } from "@ionic/react";
+import React from "react";
+import { useCharacterContext } from "../../utils/CharacterContext";
 import { AdaptiveHeaderCardContentLayout } from "./HeaderCard.Styles";
+import { shieldOutline, shieldSharp } from "ionicons/icons";
 
-interface HeaderCardProps {
-  character: Character;
-}
+export default function HeaderCard() {
+  const { character, state } = useCharacterContext();
 
-export default function HeaderCard({ character }: HeaderCardProps) {
   return (
     <IonCard>
       <AdaptiveHeaderCardContentLayout>
@@ -29,9 +31,32 @@ export default function HeaderCard({ character }: HeaderCardProps) {
               .join(", ")}`}</IonCardSubtitle>
           </IonCardHeader>
 
-          <IonCardContent>
-            Hp, SpellPoints, HitDice, AC, ProfBonus
-          </IonCardContent>
+          {/* // Hp, SpellPoints, HitDice, ProfBonus */}
+          <IonItem>
+            <IonIcon
+              slot="start"
+              ios={shieldOutline}
+              md={shieldSharp}
+              icon={shieldSharp}
+            />
+            <IonLabel>HP</IonLabel>
+            {/* // TODO: use characterState through context or something instead */}
+            <span>{`${state.hitPoints}/${character.hitPoints}`}</span>
+          </IonItem>
+
+          <IonItem>
+            <IonIcon
+              slot="start"
+              ios={shieldOutline}
+              md={shieldSharp}
+              icon={shieldSharp}
+            />
+            <IonLabel>Proficiency</IonLabel>
+            {/* // TODO: use characterState through context or something instead */}
+            <span>{character.proficiencyBonus}</span>
+          </IonItem>
+
+          <IonCardContent>{character.description}</IonCardContent>
         </div>
       </AdaptiveHeaderCardContentLayout>
     </IonCard>

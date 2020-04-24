@@ -1,6 +1,12 @@
 import styled from "styled-components";
 
-export const SavingThrowsCardLayout = styled.div`
+interface SavingThrowsColorizerProps {
+  proficient: boolean;
+}
+
+// TODO: use a real theme, not just hard coded
+export const SavingThrowsCardLayout = styled.div<SavingThrowsColorizerProps>`
+  color: ${({ proficient }) => (proficient ? "#3880ff" : "inherit")};
   display: flex;
   flex-direction: row;
   justify-content: space-between;

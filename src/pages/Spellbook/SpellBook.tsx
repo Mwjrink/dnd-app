@@ -2,10 +2,9 @@ import { IonContent, IonLabel, IonPage } from "@ionic/react";
 import React from "react";
 import PageHeader from "../../components/PageHeader/PageHeader";
 
-interface SpellBookProps {
-}
+interface SpellBookProps {}
 
-function SpellBook({ }: SpellBookProps) {
+function SpellBook({}: SpellBookProps) {
   return (
     <IonPage>
       <PageHeader title={"Spellbook"} />

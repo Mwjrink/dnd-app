@@ -39,7 +39,7 @@ function CharacterSheet({}: CharacterSheetProps) {
       <PageHeader
         title={`Character Sheet ${character ? ": " + character.name : ""}`}
       />
-      <HeaderCard character={character} />
+      <HeaderCard />
 
       <AdaptiveBodyCardLayout>
         <ScoresCard character={character} abbreviate={abbreviate} />

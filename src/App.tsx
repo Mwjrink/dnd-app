@@ -29,12 +29,17 @@ import {
 import React from "react";
 import { Redirect, Route } from "react-router-dom";
 import Menu from "./components/Menu/Menu";
-import { Character } from "./models/character";
+import { Character, CharacterState } from "./models/character";
 import { routes } from "./routing";
 /* Theme variables */
 import "./theme/variables.css";
 import { CreateSessionContext } from "./utils/DnDSessionContext";
 import { CreateUserContext } from "./utils/UserContext";
+import { Die } from "./models/common";
+import {
+  CreateCharacterContext,
+  CurrentCharacterContext,
+} from "./utils/CharacterContext";
 
 if (isPlatform("electron")) {
   // const { Menu : ElectronMenu } = require("electron");
@@ -50,46 +55,102 @@ const App: React.FC = () => {
 
   console.log((isPlatform("electron") ? "#/" : "") + "some-route-page");
 
-  const defaultCharContext = {
+  const defaultCharContext: CurrentCharacterContext = {
     character: {
       name: "Abraxus Rex",
       classes: [{ name: "Fighter" }],
       race: { name: "Dragonborn" },
       proficiencyBonus: 1,
+      ac: 13,
+      hitPoints: 20,
+      hitDice: ["d6"],
+      speed: 30,
+      passivePerception: 15,
+      initiative: 12,
+      alignment: {
+        minor: "neutral",
+        major: "neutral",
+      },
+
+      gender: "male",
+      age: 34,
+      weight: 200,
+      height: 72,
+      size: "medium",
+      description: "this is a description", // allow markdown formatting or something like that
+
+      inventory: {
+        items: [],
+        money: {
+          cp: 1,
+          sp: 2,
+          ep: 3,
+          gp: 4,
+          pp: 5,
+        },
+      },
+      equipment: {
+        items: [],
+        money: {
+          cp: 1,
+          sp: 2,
+          ep: 3,
+          gp: 4,
+          pp: 5,
+        },
+      },
+      // also allow access to a shared party inventory
+      // array/dict if Inventories and wallets that can be named and shared at will
+
+      background: {
+        name: "string",
+        lnnguages: ["string"],
+        source: "string",
+        page: 10,
+        tools: ["string"],
+        skills: ["string"],
+      },
+      attacks: [],
+      spellSlots: [1, 1, 2, 3],
+
+      // tags like active, cool, anything the user wants
+      tags: ["this", "is", "a", "tag"],
+
+      customProps: {},
 
       str: {
         name: "strength",
-        score: 10,
+        score: 12,
         savingThrowProficiency: true,
         icon: { iosIcon: barbellOutline, mdIcon: barbellSharp },
       },
       dex: {
         name: "dexterity",
-        score: 10,
+        score: 15,
         savingThrowProficiency: false,
         icon: { iosIcon: bicycleOutline, mdIcon: bicycleSharp },
       },
       con: {
         name: "constitution",
-        score: 10,
+        score: 13,
         savingThrowProficiency: true,
         icon: { iosIcon: heartCircleOutline, mdIcon: heartCircleSharp },
       },
       int: {
         name: "intelligence",
-        score: 10,
+        score: 9,
         savingThrowProficiency: false,
         icon: { iosIcon: bookOutline, mdIcon: bookSharp },
       },
       wis: {
         name: "wisdom",
-        score: 10,
+        score: 12,
         savingThrowProficiency: false,
         icon: { iosIcon: barbellOutline, mdIcon: barbellSharp },
       },
       cha: {
         name: "charisma",
-        score: 10,
+        score: 11,
         savingThrowProficiency: false,
         icon: { iosIcon: beerOutline, mdIcon: beerSharp },
       },
@@ -191,6 +252,19 @@ const App: React.FC = () => {
         },
       ],
     } as Character,
+    state: {
+      hitPoints: 10,
+      hitDice: ["d6" as Die],
+      inspiration: false,
+      deathSaves: [],
+      spellSlots: [1, 1, 1, 2, 2, 3, 4, 5],
+      // this is for stuff like lay on hands etc (maybe separate this for number vs string?)
+      customProps: {
+        "Hunted Monster Type": "dragons",
+        layOnHands: 10,
+      },
+      experience: 69420,
+    } as CharacterState,
   };
 
   const defaultUserContext = {
@@ -216,15 +290,18 @@ const App: React.FC = () => {
         {
           user: defaultUserContext.user,
           character: defaultCharContext.character,
+          state: defaultCharContext.state,
         },
       ],
       name: "string",
     },
   };
 
-  // const CharacterContext = CreateCharacterContext(defaultCharContext);
+  // TODO: is session and user even necessary? we could just pass it into menu and whatnot
   const SessionContext = CreateSessionContext(defaultSessionContext);
   const UserContext = CreateUserContext(defaultUserContext);
+  // TODO: this should be derived from session and user
+  const CharacterContext = CreateCharacterContext(defaultCharContext);
   // const db = new DbManager(SQLite);
   // db.init();
 
@@ -234,27 +311,27 @@ const App: React.FC = () => {
       <Router>
         {/* <IonSplitPane contentId="main"> */}
         <Menu />
-        {/* <CharacterContext.Provider value={defaultCharContext}> */}
         <SessionContext.Provider value={defaultSessionContext}>
           <UserContext.Provider value={defaultUserContext}>
-            <IonRouterOutlet id="main">
-              {routes.map((route, i) => {
-                return (
-                  <Route
-                    key={i}
-                    path={route.path}
-                    component={route.component}
-                    exact
-                  />
-                );
-              })}
-              {/* <Route path="/page/:name" component={Page} exact /> */}
-              <Redirect from="/" to="character-sheet" exact />
-              {/* <Route path="/" exact component={CharacterSheet} /> */}
-            </IonRouterOutlet>
+            <CharacterContext.Provider value={defaultCharContext}>
+              <IonRouterOutlet id="main">
+                {routes.map((route, i) => {
+                  return (
+                    <Route
+                      key={i}
+                      path={route.path}
+                      component={route.component}
+                      exact
+                    />
+                  );
+                })}
+                {/* <Route path="/page/:name" component={Page} exact /> */}
+                <Redirect from="/" to="character-sheet" exact />
+                {/* <Route path="/" exact component={CharacterSheet} /> */}
+              </IonRouterOutlet>
+            </CharacterContext.Provider>
           </UserContext.Provider>
         </SessionContext.Provider>
-        {/* </CharacterContext.Provider> */}
         {/* </IonSplitPane> */}
       </Router>
       {/* </IonReactRouter> */}

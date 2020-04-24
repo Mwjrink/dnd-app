@@ -1,21 +1,6 @@
-import {
-  IonCard,
-  IonIcon,
-  IonItem,
-  IonLabel,
-  IonCardTitle,
-  IonCardHeader,
-} from "@ionic/react";
+import { IonCard, IonCardHeader, IonCardTitle, IonIcon, IonItem, IonLabel } from "@ionic/react";
 import React from "react";
-import {
-  Character,
-  Score,
-  scoreKeys,
-  getModifier,
-  prefixValue,
-} from "../../models/character";
-import { ScoreLayout } from "../ScoresCard/ScoresCard.Styled";
-import ScoreDisplay from "../ScoreDisplay/ScoreDisplay";
+import { Character, getModifier, prefixValue, Score, scoreKeys } from "../../models/character";
 import { SavingThrowsCardLayout } from "./SavingThrowsCard.Styled";
 
 interface SavingThrowsCardProps {
@@ -48,7 +33,7 @@ export default function SavingThrowsCard({
               icon={score.icon.mdIcon}
               slot="start"
             />
-            <SavingThrowsCardLayout>
+            <SavingThrowsCardLayout proficient={score.savingThrowProficiency}>
               <IonLabel>
                 {abbreviate ? score.name.substr(0, 3) : score.name}
               </IonLabel>

@@ -1,8 +1,9 @@
 import { createContext, useContext } from 'react';
-import { Character } from '../models/character';
+import { Character, CharacterState } from '../models/character';
 
-interface CurrentCharacterContext {
+export interface CurrentCharacterContext {
   character: Character;
+  state: CharacterState;
 }
 
 let context: React.Context<CurrentCharacterContext>;
